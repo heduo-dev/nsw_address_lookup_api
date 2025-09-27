@@ -11,4 +11,8 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Hello World from TypeScript Express!" });
 });
 
+// Routes
+app.get("/test", (req: Request, res: Response) => {
+    res.json({ message: "test!" });
+  });
 export default app;
