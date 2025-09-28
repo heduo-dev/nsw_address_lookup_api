@@ -26,7 +26,7 @@ export default class AddressService {
       console.log(`Starting address lookup for: ${address}`);
 
       // Step 1: Validate input
-      if (!address || address.trim().length === 0) {
+      if (!address || address?.trim().length === 0) {
         return this.createErrorResponse(
           "Address is required",
           ErrorCodes.MISSING_ADDRESS
