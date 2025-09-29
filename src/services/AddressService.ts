@@ -44,7 +44,7 @@ export default class AddressService {
         );
       }
 
-      const { latitude, longitude, originalAddress, propertyId } =
+      const { latitude, longitude, originalAddress } =
         geocodingData;
 
       // Step 3: Get administrative boundaries information
@@ -88,7 +88,6 @@ export default class AddressService {
     latitude: number;
     longitude: number;
     originalAddress: string;
-    propertyId: number;
   } | null> {
     try {
       const response = await axios.get<GeocodingResponse>(
@@ -124,8 +123,6 @@ export default class AddressService {
         latitude,
         longitude,
         originalAddress: feature.properties.address,
-        propertyId:
-          feature.properties.principaladdresssiteoid || feature.properties.rid,
       };
     } catch (error) {
       console.error("Geocoding API error:", error);
