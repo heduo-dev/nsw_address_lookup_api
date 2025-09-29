@@ -11,8 +11,6 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req: Request, res: Response) => {
-  const baseUrl = `${req.protocol}://${req.get('host')}`;
-  
   const html = `
     <!DOCTYPE html>
     <html lang="en">
@@ -33,19 +31,7 @@ app.get('/', (req: Request, res: Response) => {
         <p>This API provides address lookup services for New South Wales, Australia.</p>
         
         <h2>📡 API Usage</h2>
-        <p>To lookup an address, make a GET request to:</p>
-        <div class="example">
-          <code>${baseUrl}/lookup?address=YOUR_ADDRESS</code>
-        </div>
-        
-        <h3>Example:</h3>
-        <div class="example">
-          <a href="${baseUrl}/lookup?address=346%20PANORAMA%20AVENUE%20BATHURST" target="_blank">
-            ${baseUrl}/lookup?address=346%20PANORAMA%20AVENUE%20BATHURST
-          </a>
-        </div>
-        
-        <h2>📋 Response Format</h2>
+        <p>To lookup an address, make a GET request to: /lookup?address=YOUR_ADDRESS</p>
         <p>The API returns JSON data with location coordinates, suburb, and electoral district information.</p>
         <h2> <a href="https://github.com/heduo-dev/nsw_address_lookup_api" target="_blank"/> Github</a></h2>
       </div>

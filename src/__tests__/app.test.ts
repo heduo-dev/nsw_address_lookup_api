@@ -9,7 +9,6 @@ describe('Express App - Integration Tests', () => {
         .expect(200);
 
       expect(response.text).toContain('NSW Address Lookup Service');
-      expect(response.text).toMatch(/http.*:\/\/.*\/lookup\?address=/);
     });
   });
 
