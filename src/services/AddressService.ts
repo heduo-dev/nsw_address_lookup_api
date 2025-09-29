@@ -97,7 +97,6 @@ export default class AddressService {
           timeout: AddressService.REQUEST_TIMEOUT,
           headers: {
             Accept: "application/json",
-            "User-Agent": "NSW-Address-Lookup-Service/1.0",
           },
           params: {
             where: `address='${address}'`,

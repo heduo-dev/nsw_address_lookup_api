@@ -177,14 +177,8 @@ nsw_address_lookup_api/
 # Run all integration tests (requires internet connection)
 npm test
 
-# Run with verbose output
-npm test -- --verbose
-
-# Run specific test file
-npm test -- app.test.ts
-
 # Run with coverage report
-npm test -- --coverage
+npm run test:coverage
 
 # Run tests in watch mode during development
 npm run test:watch

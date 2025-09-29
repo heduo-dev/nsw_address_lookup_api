@@ -56,7 +56,7 @@ app.get("/lookup", async (req: Request, res: Response) => {
       return res.status(400).json(errorResponse);
     }
 
-    const address = addressParam!; // We know it's valid string now
+    const address = addressParam!; // Ensure it's a valid address format
 
     console.log(`Processing address lookup request for: ${address}`);
 
@@ -65,7 +65,6 @@ app.get("/lookup", async (req: Request, res: Response) => {
     if (result.success) {
       res.json(result);
     } else {
-      // Determine appropriate HTTP status code based on error
       let statusCode = 500;
       if (result.error?.code === "MISSING_ADDRESS") {
         statusCode = 400;
