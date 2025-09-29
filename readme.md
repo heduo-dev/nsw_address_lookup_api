@@ -156,6 +156,7 @@ nsw_address_lookup_api/
 │   ├── services/
 │   │   └── AddressService.ts        # Address lookup business logic
 │   ├── app.ts                       # Express application setup
+    ├── config.ts                    # config file 
 │   ├── lambda.ts                    # AWS Lambda handler
 │   ├── server.ts                    # Local development server
 │   └── __tests__/                   # Integration tests
@@ -168,7 +169,8 @@ nsw_address_lookup_api/
 ├── dist/                            # Compiled output (generated)
 ├── cdk.out/                         # CDK output (generated)
 ├── coverage/                        # Test coverage (generated)
-└── README.md
+├── README.md
+└── ...                              # rest config files
 ```
 
 ### Running Tests
