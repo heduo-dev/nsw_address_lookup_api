@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import AddressService from "./services/AddressService";
 import { AddressLookupResponse } from "./types";
-import { extractStringFromQuery, validateAddress } from "./Utilitis/request";
+import { extractStringFromQuery, validateAddress } from "./utilitis/addressQuery";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,11 +10,50 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.get("/", (req: Request, res: Response) => {
-  const baseUrl = `${req.protocol}://${req.get("host")}`;
-  res.send(
-    `Lookup address by adding address query parameter after '/lookup'. e.g. ${baseUrl}/lookup?address=346 panorama avenue bathurst`
-  );
+app.get('/', (req: Request, res: Response) => {
+  const baseUrl = `${req.protocol}://${req.get('host')}`;
+  
+  const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NSW Address Lookup API</title>
+      <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .example { background: #f5f5f5; padding: 15px; border-radius: 5px; }
+        code { background: #e8e8e8; padding: 2px 5px; border-radius: 3px; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>🏠 NSW Address Lookup Service</h1>
+        <p>This API provides address lookup services for New South Wales, Australia.</p>
+        
+        <h2>📡 API Usage</h2>
+        <p>To lookup an address, make a GET request to:</p>
+        <div class="example">
+          <code>${baseUrl}/lookup?address=YOUR_ADDRESS</code>
+        </div>
+        
+        <h3>Example:</h3>
+        <div class="example">
+          <a href="${baseUrl}/lookup?address=346%20PANORAMA%20AVENUE%20BATHURST" target="_blank">
+            ${baseUrl}/lookup?address=346%20PANORAMA%20AVENUE%20BATHURST
+          </a>
+        </div>
+        
+        <h2>📋 Response Format</h2>
+        <p>The API returns JSON data with location coordinates, suburb, and electoral district information.</p>
+        <h2> <a href="https://github.com/heduo-dev/nsw_address_lookup_api" target="_blank"/> Github</a></h2>
+      </div>
+    </body>
+    </html>
+  `;
+  
+  res.send(html);
 });
 
 app.get("/lookup", async (req: Request, res: Response) => {

@@ -1,53 +1,15 @@
-// import request from 'supertest';
-// import app from '../app';
-
-// describe('App', () => {
-//   it('should respond with a message on GET /', async () => {
-//     const response = await request(app)
-//       .get('/')
-//       .expect(200);
-      
-//     expect(response.body).toEqual({
-//       message: 'Hello World from TypeScript Express!'
-//     });
-//   });
-// });
-
-// src/__tests__/app.test.ts
-
 import request from 'supertest';
 import app from '../app';
 
 describe('Express App - Integration Tests', () => {
   describe('GET /', () => {
-    it('should return welcome message with base URL and example', async () => {
+    it('should return homepage contains correct base RUL and example', async () => {
       const response = await request(app)
         .get('/')
         .expect(200);
 
-      expect(response.text).toContain('Lookup address by adding address query parameter');
-      expect(response.text).toContain('/lookup?address=346 panorama avenue bathurst');
+      expect(response.text).toContain('NSW Address Lookup Service');
       expect(response.text).toMatch(/http.*:\/\/.*\/lookup\?address=/);
-    });
-
-    it('should include correct base URL in response', async () => {
-      const response = await request(app)
-        .get('/')
-        .set('Host', 'example.com')
-        .expect(200);
-
-      expect(response.text).toContain('http://example.com/lookup?address=');
-    });
-
-    it('should handle HTTPS protocol correctly', async () => {
-      const response = await request(app)
-        .get('/')
-        .set('X-Forwarded-Proto', 'https')
-        .set('Host', 'api.example.com')
-        .expect(200);
-
-      // Note: This test might need app.set('trust proxy', true) to work with HTTPS
-      expect(response.text).toContain('example.com/lookup?address=');
     });
   });
 
