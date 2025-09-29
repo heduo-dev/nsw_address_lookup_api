@@ -2,26 +2,8 @@
 
 A robust, serverless Express.js application built with TypeScript and AWS CDK that provides address lookup services using NSW Government APIs. Input an address and get back location coordinates, suburb information, and electoral district details.
 
-## 🏗️ Architecture
-
-- **Runtime**: Node.js 20.x with TypeScript
-- **Framework**: Express.js with comprehensive error handling
-- **Infrastructure**: AWS CDK (Infrastructure as Code)
-- **Deployment**: AWS Lambda with Function URL (public access)
-- **APIs Integrated**:
-  - NSW Geocoded Addressing Theme API
-  - NSW Administrative Boundaries Theme API
-
-## ✨ Features
-
-- 🔍 **Address Geocoding**: Convert NSW addresses to precise coordinates
-- 🏘️ **Suburb Information**: Get suburb and electoral district details
-- 🛡️ **Robust Error Handling**: Comprehensive validation and error responses
-- 🌐 **Public API**: Direct HTTPS access via Lambda Function URL
-- 📊 **Monitoring**: CloudWatch dashboards and alarms included
-- 🧪 **Fully Tested**: Integration tests with real NSW APIs
-- 🔒 **Type Safe**: Full TypeScript implementation
-- ⚡ **Serverless**: Pay-per-use, auto-scaling Lambda deployment
+## Deployed AWS Lambda function URL: 
+`https://a60jvaibnl.execute-api.ap-southeast-2.amazonaws.com/prod/`
 
 ## 🚀 Quick Start
 
@@ -34,7 +16,7 @@ A robust, serverless Express.js application built with TypeScript and AWS CDK th
 ```bash
 # Clone the repository
 git clone git@github.com:heduo-dev/nsw_address_lookup_api.git
-cd nsw_address_lookup
+cd nsw_address_lookup_api
 
 # Install dependencies
 npm install
@@ -165,7 +147,7 @@ curl "http://localhost:3000/lookup?address=first&address=second"
 ### Project Structure
 
 ```
-nsw-address-lookup/
+nsw_address_lookup_api/
 ├── src/
 │   ├── types/
 │   │   └── index.ts                 # TypeScript interfaces
@@ -207,5 +189,3 @@ npm test -- --coverage
 # Run tests in watch mode during development
 npm run test:watch
 ```
-
-**Note**: Tests make real API calls to NSW government services, so they require internet connectivity and may occasionally fail due to network issues or API availability.
